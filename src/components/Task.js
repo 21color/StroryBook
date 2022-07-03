@@ -19,6 +19,7 @@ export default function Task({ task: { id, title, state }, onArchiveTask, onPinT
 
 			<div className="actions" onClick={(event) => event.stopPropagation()}>
 				{state !== 'TASK_ARCHIVED' && (
+					// eslint-disable-next-line jsx-a11y/anchor-is-valid
 					<a onClick={() => onPinTask(id)}>
 						<span className={`icon-star`} id={`pinTask-${id}`} aria-label={`pinTask-${id}`} />
 					</a>
@@ -27,18 +28,19 @@ export default function Task({ task: { id, title, state }, onArchiveTask, onPinT
 		</div>
 	);
 }
+
 Task.propTypes = {
 	/** Composition of the task */
 	task: PropTypes.shape({
-		// Id of the task
+		/** Id of the task */
 		id: PropTypes.string.isRequired,
-		// title of the task
+		/** Title of the task */
 		title: PropTypes.string.isRequired,
-		// Current state of the task
+		/** Current state of the task */
 		state: PropTypes.string.isRequired,
 	}),
-	// Event to change the task to archived
+	/** Event to change the task to archived */
 	onArchiveTask: PropTypes.func,
-	// Event to change the task to pinned
+	/** Event to change the task to pinned */
 	onPinTask: PropTypes.func,
 };

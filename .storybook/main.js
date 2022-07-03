@@ -1,3 +1,4 @@
+
 module.exports = {
   stories: ['../src/components/**/*.stories.js'],
   staticDirs: ["../public"],
@@ -12,6 +13,6 @@ module.exports = {
     builder: "@storybook/builder-webpack5",
   },
   features: {
-    interactionsDebugger: true,
+    postcss: false,
   },
 };
