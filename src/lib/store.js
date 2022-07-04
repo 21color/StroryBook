@@ -26,3 +26,13 @@ const TaskSlice = createSlice({
     },
   },
 });
+
+export const {updateTaskState} = TaskSlice.actions;
+
+const store = configureStore({
+  reducer: {
+    taskbox: TaskSlice.reducer, 
+  },
+});
+
+export default store;

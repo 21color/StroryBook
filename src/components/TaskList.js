@@ -1,7 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Task from './Task';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateTaskState} from '../lib/store';
 
+export default function TaskList () {
+	const tasks = useSelector((state)=> {
+		const tasksInOrder = [
+			...state.taskbox.tasks.filter((t) => t.state === 'TASK_PINNED'),
+			...state.taskbox.tasks.filter((t) => t.state !== 'TASK_PINNED'),
+		];
+
+		const filteredTasks = tasksInOrder.filter(
+			(t) => t.state === 'TASK_INBOX' ||  t.state === 'TASK_PINNED'
+		);
+		return filteredTasks;
+	});
+}
 export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 	const events = {
 		onPinTask,
